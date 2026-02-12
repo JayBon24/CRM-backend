@@ -1,0 +1,43 @@
+version: '3'
+services:
+  frps:
+    image: snowdreamtech/frps:0.64.0
+    container_name: frps
+    ports:
+      - "7000:7000"   # frp 服务端监听端口（客户端连接端口，TCP）
+      # 注意：8080/8443 端口不需要映射到宿主机
+      # Traefik 和 frps 在同一个 Docker 网络中，可以直接通过容器名访问
+      # HTTP/HTTPS 请求通过 Traefik 路由到 frps 内部端口（8080/8443）
+    volumes:
+      - ./frps.toml:/etc/frp/frps.toml  # 挂载配置文件（TOML 格式）
+      - ./logs:/var/log  # 挂载日志目录（可选，方便查看日志）
+    restart: always
+    networks:
+      - traefik-public
+    labels:
+      # Traefik 基础配置
+      - "traefik.enable=true"
+      
+      # 管理面板 HTTPS 路由配置
+      - "traefik.http.routers.frps-dashboard.rule=Host(`frps.izhule.cn`)"
+      - "traefik.http.routers.frps-dashboard.entrypoints=websecure"
+      - "traefik.http.routers.frps-dashboard.tls.certresolver=myresolver"
+      - "traefik.http.routers.frps-dashboard.service=frps-dashboard"
+      - "traefik.http.services.frps-dashboard.loadbalancer.server.port=7600"
+      
+      # ============================================
+      # Django API 路由配置（dapi.izhule.cn）
+      # ============================================
+      # Django API HTTP 路由（不使用 HTTPS，直接通过 HTTP 访问）
+      # 注意：设置高优先级避免被全局重定向规则覆盖
+      - "traefik.http.routers.api-http.rule=Host(`dapi.izhule.cn`)"
+      - "traefik.http.routers.api-http.entrypoints=web"
+      - "traefik.http.routers.api-http.priority=999"
+      - "traefik.http.routers.api-http.service=api-http"
+      - "traefik.http.services.api-http.loadbalancer.server.port=8080"
+      # 保留原始 Host header（重要：frps 需要根据 Host header 匹配代理）
+      - "traefik.http.services.api-http.loadbalancer.passHostHeader=true"
+
+networks:
+  traefik-public:
+    external: true    

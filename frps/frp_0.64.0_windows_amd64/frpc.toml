@@ -1,0 +1,30 @@
+# frp 客户端配置文件（TOML 格式）
+serverAddr = "171.80.10.200"
+serverPort = 7000
+
+# 认证token（⚠️ 必须与服务端 frps.toml 中的 token 保持一致）
+auth.token = "Q^K5F8M*5JHYk3f!&m"
+
+# 日志配置（同时输出到控制台和文件）
+log.to = "console"
+log.level = "info"
+log.maxDays = 3
+
+# 连接池大小
+transport.poolCount = 1
+
+# 心跳间隔（秒）
+transport.heartbeatInterval = 30
+transport.heartbeatTimeout = 90
+
+# ============================================
+# Django HTTP 隧道配置（用于WPS回调）
+# 注意：使用 HTTP 代理，Traefik 负责 HTTPS 处理
+# 外部 HTTPS → Traefik → frps:8080 → frpc → 本地 HTTP (127.0.0.1:8000)
+# ============================================
+[[proxies]]
+name = "web_http"
+type = "http"
+localIP = "127.0.0.1"
+localPort = 8000
+customDomains = ["dapi.izhule.cn"]

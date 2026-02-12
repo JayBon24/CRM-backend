@@ -1,0 +1,52 @@
+[
+  {
+    "model": "customer_management.customerplan",
+    "pk": 3001,
+    "fields": {
+      "customer_id": 1002,
+      "plan_type": "effective_case",
+      "title": "Effective case info",
+      "time_points": ["2026-01-05 10:00:00"],
+      "remind_method": "system",
+      "remind_advance": 30,
+      "sync_to_schedule": true,
+      "status": "pending",
+      "extra_data": {
+        "project_name": "Project Alpha",
+        "debt_subject": "Subject A",
+        "project_background": "Background A",
+        "remark": "Remark A"
+      }
+    }
+  },
+  {
+    "model": "customer_management.customerplan",
+    "pk": 3002,
+    "fields": {
+      "customer_id": 1004,
+      "plan_type": "case_plan",
+      "title": "Case plan item",
+      "time_points": ["2026-01-10 10:00:00"],
+      "remind_method": "system",
+      "remind_advance": 30,
+      "sync_to_schedule": true,
+      "status": "pending",
+      "extra_data": {}
+    }
+  },
+  {
+    "model": "customer_management.customerplan",
+    "pk": 3003,
+    "fields": {
+      "customer_id": 1005,
+      "plan_type": "payment_followup",
+      "title": "Payment followup item",
+      "time_points": ["2026-01-12 10:00:00"],
+      "remind_method": "system",
+      "remind_advance": 30,
+      "sync_to_schedule": true,
+      "status": "pending",
+      "extra_data": {}
+    }
+  }
+]

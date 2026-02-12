@@ -1,0 +1,67 @@
+-- 添加新菜单项到系统
+-- 使用方法：在Navicat中选择law-smart-link数据库，然后执行此SQL
+
+-- 先删除可能已存在的菜单（避免重复）
+DELETE FROM `lsl_system_menu` WHERE `web_path` IN ('/schedule', '/approval', '/client/public-pool', '/report/report-center', '/personal/settings', '/personal/feedback');
+
+-- 1. 添加日程管理菜单
+INSERT INTO `lsl_system_menu` (
+    `name`, `web_path`, `component`, `component_name`, `icon`, `sort`, 
+    `parent_id`, `is_link`, `link_url`, `is_catalog`, `cache`, `visible`, 
+    `is_iframe`, `is_affix`, `status`, `create_datetime`, `update_datetime`
+)
+VALUES 
+('日程管理', '/schedule', 'schedule/index', 'ScheduleIndex', 'iconfont icon-richeng', 6, 
+ NULL, 0, NULL, 0, 1, 1, 0, 0, 1, NOW(), NOW());
+
+-- 2. 添加审批中心菜单
+INSERT INTO `lsl_system_menu` (
+    `name`, `web_path`, `component`, `component_name`, `icon`, `sort`, 
+    `parent_id`, `is_link`, `link_url`, `is_catalog`, `cache`, `visible`, 
+    `is_iframe`, `is_affix`, `status`, `create_datetime`, `update_datetime`
+)
+VALUES 
+('审批中心', '/approval', 'approval/index', 'ApprovalIndex', 'iconfont icon-shenpi', 7, 
+ NULL, 0, NULL, 0, 1, 1, 0, 0, 1, NOW(), NOW());
+
+-- 3. 添加公海管理（和客户管理平级）
+INSERT INTO `lsl_system_menu` (
+    `name`, `web_path`, `component`, `component_name`, `icon`, `sort`, 
+    `parent_id`, `is_link`, `link_url`, `is_catalog`, `cache`, `visible`, 
+    `is_iframe`, `is_affix`, `status`, `create_datetime`, `update_datetime`
+)
+VALUES 
+('公海管理', '/client/public-pool', 'client/public-pool', 'PublicPool', 'iconfont icon-gonghai', 11, 
+ NULL, 0, NULL, 0, 1, 1, 0, 0, 1, NOW(), NOW());
+
+-- 4. 更新报表分析菜单
+UPDATE `lsl_system_menu` 
+SET `component` = 'report/dashboard', `name` = '数据看板', `component_name` = 'ReportDashboard'
+WHERE `web_path` = '/report' AND `name` = '报表分析';
+
+-- 添加报告中心子菜单（如果报表分析有parent_id，则使用相同的parent_id）
+SET @report_parent_id = (SELECT parent_id FROM `lsl_system_menu` WHERE `web_path` = '/report' LIMIT 1);
+
+INSERT INTO `lsl_system_menu` (
+    `name`, `web_path`, `component`, `component_name`, `icon`, `sort`, 
+    `parent_id`, `is_link`, `link_url`, `is_catalog`, `cache`, `visible`, 
+    `is_iframe`, `is_affix`, `status`, `create_datetime`, `update_datetime`
+)
+VALUES 
+('报告中心', '/report/report-center', 'report/report-center', 'ReportCenter', '', 12, 
+ @report_parent_id, 0, NULL, 0, 1, 1, 0, 0, 1, NOW(), NOW());
+
+-- 5. 添加个人设置和反馈中心
+INSERT INTO `lsl_system_menu` (
+    `name`, `web_path`, `component`, `component_name`, `icon`, `sort`, 
+    `parent_id`, `is_link`, `link_url`, `is_catalog`, `cache`, `visible`, 
+    `is_iframe`, `is_affix`, `status`, `create_datetime`, `update_datetime`
+)
+VALUES 
+('个人设置', '/personal/settings', 'personal/settings', 'PersonalSettings', 'iconfont icon-shezhi', 98, 
+ NULL, 0, NULL, 0, 1, 1, 0, 0, 1, NOW(), NOW()),
+('反馈中心', '/personal/feedback', 'personal/feedback', 'PersonalFeedback', 'iconfont icon-fankui', 99, 
+ NULL, 0, NULL, 0, 1, 1, 0, 0, 1, NOW(), NOW());
+
+-- 完成
+SELECT '菜单添加完成！请刷新前端页面查看。' AS message;

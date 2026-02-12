@@ -1,0 +1,47 @@
+[
+  {
+    "model": "customer_management.followuprecord",
+    "pk": 2001,
+    "fields": {
+      "client_id": 1002,
+      "user_id": 1,
+      "method": "PHONE",
+      "summary": "Initial phone call",
+      "conclusion": "Customer is interested",
+      "content": "Initial phone call; customer is interested.",
+      "duration": 15,
+      "location_status": "success",
+      "lng": 114.0579,
+      "lat": 22.5431,
+      "address": "Shenzhen",
+      "internal_participants": [{"id": 1, "name": "User1"}],
+      "customer_participants": [{"name": "Bob"}],
+      "attachments": [],
+      "followup_time": "2025-12-31T02:00:00Z",
+      "next_followup_time": "2026-01-07T02:00:00Z"
+    }
+  },
+  {
+    "model": "customer_management.followuprecord",
+    "pk": 2002,
+    "fields": {
+      "client_id": 1003,
+      "user_id": 1,
+      "method": "VISIT",
+      "method_other": null,
+      "summary": "On-site meeting",
+      "conclusion": "Prepare proposal",
+      "content": "On-site meeting; prepare proposal.",
+      "duration": 60,
+      "location_status": "success",
+      "lng": 121.4737,
+      "lat": 31.2304,
+      "address": "Shanghai",
+      "internal_participants": [{"id": 1, "name": "User1"}],
+      "customer_participants": [{"name": "Cindy"}],
+      "attachments": [],
+      "followup_time": "2025-12-30T02:00:00Z",
+      "next_followup_time": null
+    }
+  }
+]

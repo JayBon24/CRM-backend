@@ -1,0 +1,29 @@
+# frp 服务端配置文件（TOML 格式）
+
+# frp 服务端监听端口（客户端连接端口）
+bindPort = 7000
+
+# HTTP/HTTPS 代理端口（用于WPS回调）
+# 注意：如果 80/443 被 Traefik 占用，使用内部端口
+# Traefik 会将这些域名的请求转发到这些端口
+vhostHTTPPort = 8080
+vhostHTTPSPort = 8443
+
+# 管理面板配置
+webServer.addr = "0.0.0.0"
+webServer.port = 7600
+webServer.user = "admin"
+webServer.password = "admin"
+
+# 认证token（⚠️ 必须修改为强密码，与客户端保持一致）
+auth.token = "Q^K5F8M*5JHYk3f!&m"
+
+# frp日志配置（输出到控制台，方便 docker logs 查看）
+log.to = "console"
+log.level = "info"
+log.maxDays = 3
+
+# 高级配置
+transport.maxPoolCount = 5
+transport.heartbeatTimeout = 90
+

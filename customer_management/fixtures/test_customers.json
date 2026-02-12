@@ -1,0 +1,104 @@
+[
+  {
+    "model": "customer_management.customer",
+    "pk": 1001,
+    "fields": {
+      "name": "Test Customer A",
+      "contact_person": "Alice",
+      "contact_phone": "13800000001",
+      "contact_email": "alice@example.com",
+      "address": "Shenzhen Nanshan",
+      "remark": "Public pool sample",
+      "status": "PUBLIC_POOL",
+      "valid_visit_count": 0,
+      "followup_count": 0,
+      "client_grade": "A",
+      "recycle_risk_level": "none"
+    }
+  },
+  {
+    "model": "customer_management.customer",
+    "pk": 1002,
+    "fields": {
+      "name": "Test Customer B",
+      "contact_person": "Bob",
+      "contact_phone": "13800000002",
+      "contact_email": "bob@example.com",
+      "address": "Guangzhou Tianhe",
+      "remark": "Follow up blank stage",
+      "status": "FOLLOW_UP",
+      "valid_visit_count": 0,
+      "followup_count": 1,
+      "client_grade": "B",
+      "recycle_risk_level": "low"
+    }
+  },
+  {
+    "model": "customer_management.customer",
+    "pk": 1003,
+    "fields": {
+      "name": "Test Customer C",
+      "contact_person": "Cindy",
+      "contact_phone": "13800000003",
+      "contact_email": "cindy@example.com",
+      "address": "Shenzhen Futian",
+      "remark": "Follow up meeting stage",
+      "status": "FOLLOW_UP",
+      "valid_visit_count": 2,
+      "followup_count": 3,
+      "client_grade": "B",
+      "recycle_risk_level": "medium"
+    }
+  },
+  {
+    "model": "customer_management.customer",
+    "pk": 1004,
+    "fields": {
+      "name": "Test Customer D",
+      "contact_person": "David",
+      "contact_phone": "13800000004",
+      "contact_email": "david@example.com",
+      "address": "Shanghai Pudong",
+      "remark": "Case stage",
+      "status": "CASE",
+      "valid_visit_count": 2,
+      "followup_count": 5,
+      "client_grade": "C",
+      "recycle_risk_level": "medium"
+    }
+  },
+  {
+    "model": "customer_management.customer",
+    "pk": 1005,
+    "fields": {
+      "name": "Test Customer E",
+      "contact_person": "Eve",
+      "contact_phone": "13800000005",
+      "contact_email": "eve@example.com",
+      "address": "Beijing Chaoyang",
+      "remark": "Payment stage",
+      "status": "PAYMENT",
+      "valid_visit_count": 3,
+      "followup_count": 6,
+      "client_grade": "C",
+      "recycle_risk_level": "high"
+    }
+  },
+  {
+    "model": "customer_management.customer",
+    "pk": 1006,
+    "fields": {
+      "name": "Test Customer F",
+      "contact_person": "Frank",
+      "contact_phone": "13800000006",
+      "contact_email": "frank@example.com",
+      "address": "Hangzhou Xihu",
+      "remark": "Won stage",
+      "status": "WON",
+      "valid_visit_count": 4,
+      "followup_count": 8,
+      "client_grade": "A",
+      "recycle_risk_level": "none"
+    }
+  }
+]

@@ -1,0 +1,245 @@
+[
+    {
+        "name": "智能对话",
+        "icon": "ele-ChatDotRound",
+        "sort": 1,
+        "is_link": false,
+        "is_catalog": false,
+        "web_path": "/intelligent-chat",
+        "component": "intelligent-chat/index",
+        "component_name": "IntelligentChat",
+        "status": true,
+        "cache": true,
+        "visible": true,
+        "children": [],
+        "menu_button": [
+            {
+                "name": "查询",
+                "value": "intelligent-chat:Search",
+                "api": "/api/case/regulation-conversations/list/",
+                "method": 0
+            },
+            {
+                "name": "创建对话",
+                "value": "intelligent-chat:CreateConversation",
+                "api": "/api/case/regulation-conversations/create/",
+                "method": 1
+            },
+            {
+                "name": "发送消息",
+                "value": "intelligent-chat:SendMessage",
+                "api": "/api/case/regulation-conversations/{id}/add-message/",
+                "method": 1
+            },
+            {
+                "name": "删除对话",
+                "value": "intelligent-chat:DeleteConversation",
+                "api": "/api/case/regulation-conversations/{id}/delete/",
+                "method": 3
+            },
+            {
+                "name": "清空对话",
+                "value": "intelligent-chat:ClearConversations",
+                "api": "/api/case/regulation-conversations/clear-all/",
+                "method": 3
+            }
+        ]
+    },
+    {
+        "name": "案例管理",
+        "icon": "ele-FolderAdd",
+        "sort": 2,
+        "is_link": false,
+        "is_catalog": false,
+        "web_path": "/case",
+        "component": "case/index",
+        "component_name": "CaseManagement",
+        "status": true,
+        "cache": true,
+        "visible": true,
+        "children": [
+            {
+                "name": "案例信息",
+                "icon": "ele-Document",
+                "sort": 1,
+                "is_link": false,
+                "is_catalog": false,
+                "web_path": "/case/info",
+                "component": "case/info/index",
+                "component_name": "CaseInfo",
+                "status": true,
+                "cache": true,
+                "visible": true,
+                "children": []
+            },
+            {
+                "name": "模版管理",
+                "icon": "ele-Files",
+                "sort": 2,
+                "is_link": false,
+                "is_catalog": false,
+                "web_path": "/case/template",
+                "component": "case/template/index",
+                "component_name": "CaseTemplate",
+                "status": true,
+                "cache": true,
+                "visible": true,
+                "children": []
+            },
+            {
+                "name": "法规检索",
+                "icon": "ele-Search",
+                "sort": 3,
+                "is_link": false,
+                "is_catalog": false,
+                "web_path": "/case/regulation-search",
+                "component": "case/regulation-search/index",
+                "component_name": "RegulationSearch",
+                "status": true,
+                "cache": true,
+                "visible": true,
+                "children": []
+            },
+            {
+                "name": "新建案例",
+                "icon": "",
+                "sort": 4,
+                "is_link": false,
+                "is_catalog": false,
+                "web_path": "/case/create",
+                "component": "case/create",
+                "component_name": "CaseCreate",
+                "status": true,
+                "cache": false,
+                "visible": false,
+                "children": []
+            },
+            {
+                "name": "案例详情",
+                "icon": "",
+                "sort": 5,
+                "is_link": false,
+                "is_catalog": false,
+                "web_path": "/case/detail/:id",
+                "component": "case/detail",
+                "component_name": "CaseDetail",
+                "status": true,
+                "cache": false,
+                "visible": false,
+                "children": []
+            },
+            {
+                "name": "案例编辑",
+                "icon": "",
+                "sort": 6,
+                "is_link": false,
+                "is_catalog": false,
+                "web_path": "/case/detail",
+                "component": "case/detail",
+                "component_name": "CaseEdit",
+                "status": true,
+                "cache": false,
+                "visible": false,
+                "children": []
+            }
+        ],
+        "menu_button": [
+            {
+                "name": "查询",
+                "value": "case:Search",
+                "api": "/api/case/cases/",
+                "method": 0
+            },
+            {
+                "name": "新增",
+                "value": "case:Create",
+                "api": "/api/case/cases/",
+                "method": 1
+            },
+            {
+                "name": "编辑",
+                "value": "case:Update",
+                "api": "/api/case/cases/{id}/",
+                "method": 2
+            },
+            {
+                "name": "删除",
+                "value": "case:Delete",
+                "api": "/api/case/cases/{id}/",
+                "method": 3
+            },
+            {
+                "name": "查看详情",
+                "value": "case:Detail",
+                "api": "/api/case/cases/{id}/",
+                "method": 0
+            },
+            {
+                "name": "生成文档",
+                "value": "case:GenerateDocument",
+                "api": "/api/case/cases/{id}/generate_manual_document/",
+                "method": 1
+            },
+            {
+                "name": "AI生成",
+                "value": "case:AIGenerate",
+                "api": "/api/case/cases/{id}/generate_ai_document/",
+                "method": 1
+            },
+            {
+                "name": "模版查询",
+                "value": "template:Search",
+                "api": "/api/case/templates/",
+                "method": 0
+            },
+            {
+                "name": "模版上传",
+                "value": "template:Upload",
+                "api": "/api/case/templates/",
+                "method": 1
+            },
+            {
+                "name": "模版编辑",
+                "value": "template:Update",
+                "api": "/api/case/templates/{id}/",
+                "method": 2
+            },
+            {
+                "name": "模版删除",
+                "value": "template:Delete",
+                "api": "/api/case/templates/{id}/",
+                "method": 3
+            },
+            {
+                "name": "模版预览",
+                "value": "template:Preview",
+                "api": "/api/case/templates/{id}/preview/",
+                "method": 0
+            },
+            {
+                "name": "法规检索",
+                "value": "regulation:Search",
+                "api": "/api/case/regulation-search/",
+                "method": 0
+            },
+            {
+                "name": "法规搜索",
+                "value": "regulation:SearchRegulations",
+                "api": "/api/case/regulation-search/regulations/",
+                "method": 0
+            },
+            {
+                "name": "搜索建议",
+                "value": "regulation:Suggestions",
+                "api": "/api/case/regulation-search/suggestions/",
+                "method": 0
+            },
+            {
+                "name": "导出结果",
+                "value": "regulation:Export",
+                "api": "/api/case/regulation-search/export/",
+                "method": 0
+            }
+        ]
+    }
+]

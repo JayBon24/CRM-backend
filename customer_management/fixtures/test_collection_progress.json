@@ -1,0 +1,20 @@
+[
+  {
+    "model": "customer_management.collectionprogress",
+    "pk": 4001,
+    "fields": {
+      "customer_id": 1006,
+      "total_amount": "120.00",
+      "installment_count": 3,
+      "mode": "average",
+      "installments": [
+        { "amount": 40, "time": "2026-01-15 10:00:00" },
+        { "amount": 40, "time": "2026-02-15 10:00:00" },
+        { "amount": 40, "time": "2026-03-15 10:00:00" }
+      ],
+      "remind_method": "system",
+      "remind_advance": 30,
+      "sync_to_schedule": true
+    }
+  }
+]
